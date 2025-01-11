@@ -1,0 +1,46 @@
+﻿@{
+    var beanOfTheDay = ViewData["BeanOfTheDay"] as MvcBean.Models.Bean;
+    var todayDate = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+    var beanColourHex = string.IsNullOrEmpty(beanOfTheDay?.ColourHex) ? "#FFFFFF" : beanOfTheDay.ColourHex;
+    var beanColourTitle = string.IsNullOrEmpty(beanOfTheDay?.ColourHex) ? "No Colour" : beanOfTheDay.ColourHex;
+}
+
+@if (beanOfTheDay != null)
+{
+    <div class="bean-of-the-day">
+        <h2>Bean of the Day - @todayDate</h2>
+
+        @if (!string.IsNullOrWhiteSpace(beanOfTheDay.Name))
+        {
+            <p><strong>Name:</strong> @beanOfTheDay.Name</p>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(beanOfTheDay.Aroma))
+        {
+            <p><strong>Aroma:</strong> @beanOfTheDay.Aroma</p>
+        }
+
+        @if (!string.IsNullOrEmpty(beanOfTheDay.ColourHex))
+        {
+            <p>
+                <strong>Colour:</strong>
+                <span style="display: inline-block; width: 80px; height: 20px; background-color: @beanColourHex; border: 1px solid #000;" title="@beanColourTitle"></span>
+            </p>
+        }
+
+        <p><strong>Price per 100g:</strong> £@beanOfTheDay.PricePer100g</p>
+
+
+        @if (!string.IsNullOrWhiteSpace(beanOfTheDay.ImagePath))
+        {
+            <p>
+                <strong>Image:</strong>
+                <img src="@beanOfTheDay.ImagePath" alt="Bean of the Day Image" style="width: 100px; height: auto;" />
+            </p>
+        }
+    </div>
+}
+else
+{
+    <p>No Bean of the Day available. Check back tomorrow, or visit our website AllThe.Beans for latest news!</p>
+}

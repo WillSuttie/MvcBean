@@ -1,0 +1,37 @@
+﻿@model MvcBean.Models.Bean
+
+<script src="/js/site.js"></script>
+
+<!-- Form Fields -->
+<div class="form-group">
+    <label asp-for="Name" class="control-label required"></label>
+    <input asp-for="Name" class="form-control" required />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="SaleDate" class="control-label required"></label>
+    <input asp-for="SaleDate" class="form-control" required />
+    <span asp-validation-for="SaleDate" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Aroma" class="control-label"></label>
+    <input asp-for="Aroma" class="form-control" />
+    <span asp-validation-for="Aroma" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="PricePer100g" class="control-label required"></label>
+    <input asp-for="PricePer100g" class="form-control" required />
+    <span asp-validation-for="PricePer100g" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="ColourHex" class="control-label"></label>
+    <input type="color" asp-for="ColourHex" class="form-control" id="colourHexInput" />
+    <span asp-validation-for="ColourHex" class="text-danger"></span>
+</div>
+
+
+}

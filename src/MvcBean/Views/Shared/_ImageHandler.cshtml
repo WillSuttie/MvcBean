@@ -1,0 +1,32 @@
+﻿@model MvcBean.Models.Bean
+
+@if (Model != null && !string.IsNullOrEmpty(Model.ImagePath) && Model.ImagePath != Bean.PlaceholderImagePath)
+{
+    <div class="form-group">
+        <p>Current Image:</p>
+        <a href="@Model.ImagePath" target="_blank">
+            <img src="@Model.ImagePath" alt="Current image" style="max-width: 200px; border: 1px solid #ddd; padding: 5px;" />
+        </a>
+        <div class="mt-2">
+            <button type="button" class="btn btn-danger" id="deleteImageButton" data-bean-id="@Model.Id">Delete Image</button>
+        </div>
+    </div>
+}
+
+<!-- File input for uploading a new image -->
+<div class="form-group">
+    <label asp-for="ImagePath" class="control-label"></label>
+    <input type="file" id="imageInput" name="image" accept=".jpg,.jpeg,.png,.gif" />
+    <span id="imageError" class="text-danger" style="font-size: 0.9em;"></span>
+</div>
+
+<!-- Thumbnail Preview -->
+<div id="imagePreviewContainer" style="display: none;">
+    <p>Selected Image:</p>
+    <img id="imagePreview" src="#" alt="Image preview" style="max-width: 200px; border: 1px solid #ddd; padding: 5px;" />
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+    <script src="/js/imageUtilities.js"></script>
+}

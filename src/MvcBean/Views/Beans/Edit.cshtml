@@ -1,0 +1,26 @@
+﻿@model MvcBean.Models.Bean
+
+@{
+    ViewData["Title"] = "Edit Bean";
+    ViewData["FormAction"] = "Edit";
+    ViewData["SubmitButtonText"] = "Save";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+
+@await Html.PartialAsync("_BeanForm", Model)
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+    <script src="/js/imageValidation.js"></script>
+}
+    
+
+<div class="form-group">
+    <!-- Navigate to the Delete confirmation page -->
+    <a href="@Url.Action("Delete", "Beans", new { id = Model.Id })" class="btn btn-danger">
+        Delete Bean
+    </a>
+</div>

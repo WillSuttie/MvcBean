@@ -1,0 +1,80 @@
+﻿@model IEnumerable<MvcBean.Models.Bean>
+@{
+    ViewData["Title"] = "Index";
+    int currentPage = ViewData["CurrentPage"] as int? ?? 1;
+    int totalPages = ViewData["TotalPages"] as int? ?? 1;
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+            <th>@Html.DisplayNameFor(model => model.First().SaleDate)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Aroma)</th>
+            <th>@Html.DisplayNameFor(model => model.First().ColourHex)</th>
+            <th>@Html.DisplayNameFor(model => model.First().PricePer100g)</th>
+            <th>Image Link</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.SaleDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Aroma)</td>
+                <td>
+                    <div style="width: 80px; height: 20px; background-color: @(string.IsNullOrEmpty(item.ColourHex) ? "#FFFFFF" : item.ColourHex); border: 1px solid #000;" title="@(string.IsNullOrEmpty(item.ColourHex) ? "No Colour" : item.ColourHex)"></div>
+                    @Html.DisplayFor(modelItem => item.ColourHex)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.PricePer100g)</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+                        <a href="@item.ImagePath" target="_blank">View Image</a>
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Manage</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="pagination">
+    <p>Page:</p>
+    <ul class="pagination">
+        @if (currentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-page="@(currentPage - 1)">Previous</a>
+            </li>
+        }
+
+        @for (int i = 1; i <= totalPages; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+            </li>
+        }
+
+        @if (currentPage < totalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-page="@(currentPage + 1)">Next</a>
+            </li>
+        }
+    </ul>
+</div>

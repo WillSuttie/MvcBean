@@ -1,0 +1,25 @@
+﻿@model MvcBean.Models.Bean
+
+@{
+    string formAction = ViewData["FormAction"]?.ToString() ?? "Create";
+    string submitButtonText = ViewData["SubmitButtonText"]?.ToString() ?? "Save";
+}
+
+<script src="/js/site.js"></script>
+
+<form asp-action="@formAction" enctype="multipart/form-data">
+    <!-- Shared Fields -->
+    @await Html.PartialAsync("_BeanFields", Model)
+
+    <!-- Image Handling -->
+    @await Html.PartialAsync("_ImageHandler", Model)
+
+    <!-- Submit Button -->
+    <div class="form-group">
+        <button type="submit" id="submitButton" class="btn btn-primary">
+            @submitButtonText
+        </button>
+    </div>
+</form>
+
+<a href="@Url.Action("Index")">Back to List</a>

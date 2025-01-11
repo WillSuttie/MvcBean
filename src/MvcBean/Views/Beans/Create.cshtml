@@ -1,0 +1,16 @@
+﻿@model MvcBean.Models.Bean
+
+@{
+    ViewData["Title"] = "Create Bean";
+    ViewData["FormAction"] = "Create";
+    ViewData["SubmitButtonText"] = "Create";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@await Html.PartialAsync("_BeanForm", Model)
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+    <script src="/js/imageValidation.js"></script>
+}

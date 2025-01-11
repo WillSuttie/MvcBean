@@ -1,0 +1,259 @@
+/* ------------------------------
+   Global Variables
+------------------------------ */
+:root {
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --primary-colour: #007bff;
+    --focus-outline-colour: #258cfb;
+    --shadow-light: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    --navbar-bg: white;
+    --sticky-nav-padding: 10px;
+    --footer-margin: 60px;
+}
+
+/* ------------------------------
+   Global Styles
+------------------------------ */
+html {
+    font-size: var(--font-size-sm);
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: var(--font-size-md);
+    }
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    margin-bottom: var(--footer-margin);
+}
+
+/* ------------------------------
+   Typography
+------------------------------ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 0.5em;
+}
+
+h1, h2 {
+    margin: 1rem 0;
+}
+
+/* ------------------------------
+   Links
+------------------------------ */
+a {
+    color: var(--primary-colour);
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+        color: #0056b3;
+    }
+
+/* ------------------------------
+   Navbar
+------------------------------ */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--navbar-bg);
+    box-shadow: var(--shadow-light);
+    padding: var(--sticky-nav-padding);
+}
+
+    .sticky-nav ul {
+        list-style: none;
+        margin: 0 0 0 35px;
+        padding: 0;
+        display: flex;
+        gap: 15px;
+    }
+
+    .sticky-nav a,
+    .sticky-nav .navbar-brand {
+        text-decoration: none;
+        color: inherit;
+    }
+
+        .sticky-nav .navbar-brand.admin-hover:hover {
+            color: var(--primary-colour);
+        }
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: var(--primary-colour);
+    }
+
+.navbar-nav .nav-link-disabled {
+    pointer-events: none;
+    color: inherit;
+}
+
+/* Navbar Text */
+.navbar-text {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    font-size: var(--font-size-md);
+    margin-right: 10px;
+}
+
+/* Branding (non-link) */
+span.navbar-brand {
+    color: inherit;
+    cursor: default;
+    text-decoration: none;
+}
+
+    span.navbar-brand:hover {
+        color: inherit;
+    }
+
+/* ------------------------------
+   Buttons
+------------------------------ */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-colour);
+    border-color: var(--primary-colour);
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+        box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+
+    .btn-danger:hover {
+        background-color: #b02a37;
+        border-color: #b02a37;
+        box-shadow: 0 4px 6px rgba(220, 53, 69, 0.3);
+    }
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--focus-outline-colour);
+}
+
+/* ------------------------------
+   Forms and Inputs
+------------------------------ */
+input, select, textarea {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    input:focus, select:focus, textarea:focus {
+        border-color: var(--primary-colour);
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        outline: none;
+    }
+
+    input:invalid {
+        border-color: red;
+    }
+
+    input:valid {
+        border-color: green;
+    }
+
+label.required::after {
+    content: " *";
+    color: red;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* ------------------------------
+   Tables
+------------------------------ */
+table tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+/* ------------------------------
+   Cards
+------------------------------ */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    box-shadow: var(--shadow-light);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+/* ------------------------------
+   Footer
+------------------------------ */
+footer {
+    background-color: #f1f1f1;
+    padding: 1rem 0;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-light);
+}
+
+    footer a {
+        color: var(--primary-colour);
+        text-decoration: none;
+    }
+
+        footer a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+/* ------------------------------
+   Spacing
+------------------------------ */
+.container {
+    padding: 2rem;
+}
